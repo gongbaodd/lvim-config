@@ -7,6 +7,15 @@
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
+vim.opt.cursorline = true -- highlight cursor position
+vim.opt.cursorcolumn = true -- highlight cursor position
+vim.opt.foldenable = false -- All folds are open
+vim.opt.showmatch = true -- Briefly jump to the match bracket
+vim.opt.matchtime = 0
+vim.opt.softtabstop = 2
+vim.opt.ttimeoutlen = 1000 -- Time in ms to wait for a key code sequence to complete
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "i" -- conceal cursor in insert mode
 
 -- general
 lvim.log.level = "info"
