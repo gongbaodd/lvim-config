@@ -1,6 +1,4 @@
---[[
- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
- `lvim` is the global options object
+--[[ THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT `lvim` is the global options object
 ]]
 
 -- vim options
@@ -31,7 +29,10 @@ lvim.format_on_save = {
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
+lvim.keys.visual_mode["$"] = "g_" -- go to the end of the line
+lvim.keys.normal_mode["$"] = "g_" -- go to the end of the line
+lvim.keys.normal_mode["qq"] = ":q!<CR>"
+lvim.keys.normal_mode["<leader>q"] = ":qa!<CR>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
