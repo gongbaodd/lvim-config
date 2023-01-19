@@ -100,13 +100,36 @@ lvim.builtin.treesitter.auto_install = true
 --   },
 -- }
 
--- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+-- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
+lvim.plugins = {
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  { "nacro90/numb.nvim" },
+  {
+    "MunifTanjim/prettier.nvim",
+    config = function()
+      require("prettier").setup({
+        bin = 'prettierd',
+        filetypes = {
+          "css",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "json",
+          "scss",
+          "less"
+        }
+      })
+    end,
+  },
+  { "onsails/lspkind-nvim" },
+  { "glepnir/lspsaga.nvim" },
+}
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
 -- vim.api.nvim_create_autocmd("FileType", {
