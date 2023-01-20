@@ -10,15 +10,33 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save.enabled = false
+lvim.format_on_save.enabled = true
 lvim.colorscheme = "lunar"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
+-- vim options
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.relativenumber = true
+vim.opt.cursorline = true -- highlight cursor position
+vim.opt.cursorcolumn = true -- highlight cursor position
+vim.opt.foldenable = false -- All folds are open
+vim.opt.showmatch = true -- Briefly jump to the match bracket
+vim.opt.matchtime = 0
+vim.opt.softtabstop = 2
+vim.opt.ttimeoutlen = 1000 -- Time in ms to wait for a key code sequence to complete
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "i" -- conceal cursor in insert mode
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.visual_mode["$"] = "g_" -- go to the end of the line
+lvim.keys.normal_mode["$"] = "g_" -- go to the end of the line
+lvim.keys.normal_mode["qq"] = ":q!<CR>"
+lvim.keys.normal_mode["<leader>q"] = ":qa!<CR>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -163,12 +181,35 @@ lvim.builtin.treesitter.highlight.enable = true
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  { "nacro90/numb.nvim" },
+  {
+    "MunifTanjim/prettier.nvim",
+    config = function()
+      require("prettier").setup({
+        bin = 'prettierd',
+        filetypes = {
+          "css",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "json",
+          "scss",
+          "less"
+        }
+      })
+    end,
+  },
+  { "onsails/lspkind-nvim" },
+  { "glepnir/lspsaga.nvim" },
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
