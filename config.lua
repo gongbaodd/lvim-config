@@ -32,7 +32,7 @@ vim.opt.concealcursor = "i" -- conceal cursor in insert mode
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.insert_mode["<C-s>"] = "<Esc>:w<cr>i"
 lvim.keys.visual_mode["$"] = "g_" -- go to the end of the line
 lvim.keys.normal_mode["$"] = "g_" -- go to the end of the line
 lvim.keys.normal_mode["qq"] = ":q!<CR>"
@@ -129,6 +129,33 @@ lvim.builtin.treesitter.highlight.enable = true
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
+require("lvim.lsp.manager").setup("emmet_ls", {
+  filetypes = {
+    "html",
+    "typescriptreact",
+    "javascriptreact",
+    "css",
+    "scss",
+    "less"
+  },
+  init_options = {
+    html = {
+      options = {
+        ["output.selfClosingStyle"] = "xhtml"
+      }
+    },
+    typescriptreact = {
+      options = {
+        ["jsx.enabled"] = "true"
+      }
+    },
+    javascriptreact = {
+      options = {
+        ["jsx.enabled"] = "true"
+      }
+    },
+  }
+})
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -185,7 +212,18 @@ lvim.plugins = {
   {
     "windwp/nvim-ts-autotag",
     config = function()
-      require("nvim-ts-autotag").setup()
+      require("nvim-ts-autotag").setup({
+        filetypes = {
+          "html",
+          "xml",
+          "javascriptreact",
+          "typescriptreact",
+          "php",
+          "markdown",
+          "glimmer",
+          "handlebars"
+        }
+      })
     end,
   },
   { "nacro90/numb.nvim" },
