@@ -33,10 +33,17 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.insert_mode["<C-s>"] = "<Esc>:w<cr>i"
-lvim.keys.visual_mode["$"] = "g_" -- go to the end of the line
-lvim.keys.normal_mode["$"] = "g_" -- go to the end of the line
+-- goto end of the line
+lvim.keys.visual_mode["$"] = "g_"
+lvim.keys.normal_mode["$"] = "g_"
+-- quit
 lvim.keys.normal_mode["qq"] = ":q!<CR>"
 lvim.keys.normal_mode["<leader>q"] = ":qa!<CR>"
+-- select lines
+lvim.keys.insert_mode["<S-Up>"] = "<Esc>v<up>"
+lvim.keys.insert_mode["<S-Down>"] = "<Esc>v<Down>"
+lvim.keys.normal_mode["<S-Up>"] = "<Esc>v<up>"
+lvim.keys.normal_mode["<S-Down>"] = "<Esc>v<Down>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
